@@ -1,39 +1,24 @@
 import userModel from "../models/userModel.js";
 
-export const registerController = async(req, res) => {
+export const registerController = async(req, res, next) => {
     try {
         const { firstName,  lastName, email, password } = req.body
         //validate
         if(!firstName){
-            return res.status(400).send({
-                            message:"Please provide first name",
-                            success: false,
-                        })
+           next('First Name is required');
         }
         if (!lastName) {
-            return res.status(400).send({
-                message: "Please provide last name",
-                success: false,
-            });
+           next("Last Name is required");
         }
         if(!email){
-            return res.status(400).send({
-                            message:"Please provide email",
-                            success: false,
-                        })
+            next("Email is required");
         }
         if(!password){
-            return res.status(400).send({
-                            message:"Please provide password",
-                            success: false,
-                        })
+            next("Password is required and greater than 6 characters");
         }
         const existingUser = await userModel.findOne({email})
         if(existingUser){
-            res.status(200).send({
-                success: false,
-                message:"Email already exists, Please login",
-            })
+            next("Email already exists, Please login");
         }
         const user = await userModel.create({firstName,lastName,email,password});
         res.status(201).send({
@@ -42,11 +27,6 @@ export const registerController = async(req, res) => {
             user
         });
     } catch (error) {
-        console.error(error);
-        res.status(400).send({
-            message:"Error in register Controller",
-            success: false,
-            error
-        })
+        next(error);
     }
 };
