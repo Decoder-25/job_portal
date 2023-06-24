@@ -16,15 +16,22 @@ export const registerController = async(req, res, next) => {
         if(!password){
             next("Password is required and must be greater than 6 characters");
         }
-        const existingUser = await userModel.findOne({email})
+        const existingUser = await userModel.findOne({email});
         if(existingUser){
             next("Email already exists, Please login");
         }
         const user = await userModel.create({firstName,lastName,email,password});
+        //token
+        const token = user.createJWT();
         res.status(201).send({
             success: true,
             message:"User created successfully",
-            user
+            user: {
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email
+            },
+            token
         });
 
 };
