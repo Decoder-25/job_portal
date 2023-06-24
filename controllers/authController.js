@@ -1,7 +1,7 @@
 import userModel from "../models/userModel.js";
 
 export const registerController = async(req, res, next) => {
-    try {
+
         const { firstName,  lastName, email, password } = req.body
         //validate
         if(!firstName){
@@ -14,7 +14,7 @@ export const registerController = async(req, res, next) => {
             next("Email is required");
         }
         if(!password){
-            next("Password is required and greater than 6 characters");
+            next("Password is required and must be greater than 6 characters");
         }
         const existingUser = await userModel.findOne({email})
         if(existingUser){
@@ -26,7 +26,5 @@ export const registerController = async(req, res, next) => {
             message:"User created successfully",
             user
         });
-    } catch (error) {
-        next(error);
-    }
+
 };
