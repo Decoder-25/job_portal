@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Email is Required"],
       unique: true,
-      validate: validator.isEmail
+      validate: validator.isEmail,
     },
     password: {
       type: String,
@@ -26,6 +26,11 @@ const userSchema = new mongoose.Schema(
       minlength: [6, "Password length should be greater than 6 characters"],
       select: true,
     },
+    role: {
+      type: String,
+      required: true,
+      enum: ['helper', 'recruiter'],
+    }
   },
   { timestamps: true }
 );
