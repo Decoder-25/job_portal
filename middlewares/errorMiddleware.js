@@ -1,4 +1,4 @@
-//erroe middleware || NEXT function
+//error middleware || NEXT function
 
 const errorMiddleware = (err, req, res, next) => {
     console.log(err);

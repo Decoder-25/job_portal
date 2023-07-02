@@ -20,6 +20,8 @@ connectDB();
 //rest objects
 const app = express();
 
+// /api/v1/auth/register
+
 //middelware
 app.use(express.json());
 app.use(cors());
