@@ -2,7 +2,7 @@ import userModel from "../models/userModel.js";
 
 export const registerController = async(req, res, next) => {
 
-        const { firstName,  lastName, email, password } = req.body
+        const { firstName,  lastName, email, password, role } = req.body
         //validate
         if(!firstName){
            next('First Name is required');
@@ -16,11 +16,14 @@ export const registerController = async(req, res, next) => {
         if(!password){
             next("Password is required and must be greater than 6 characters");
         }
+        if(!role){
+                    next("Choose a role that fits your requirements");
+        }
         const existingUser = await userModel.findOne({email});
         if(existingUser){
             next("Email already exists, Please login");
         }
-        const user = await userModel.create({firstName,lastName,email,password});
+        const user = await userModel.create({firstName,lastName,email,password,role});
         //token
         const token = user.createJWT();
         res.status(201).send({
@@ -29,7 +32,8 @@ export const registerController = async(req, res, next) => {
             user: {
                 firstName: user.firstName,
                 lastName: user.lastName,
-                email: user.email
+                email: user.email,
+                role: user.role,
             },
             token
         });
