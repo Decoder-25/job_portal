@@ -1,12 +1,15 @@
+// import img from './images/maid.png';
+import "./Welcome.css"
+
 const Welcome = (props) => {
   return (
-    <div>
-      <div>
-        <h1>Welcome to Job Portal</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, consequatur ad nihil aliquam placeat recusandae labore libero itaque ipsum quibusdam sunt? Veritatis dolores id, aut totam aperiam dolor sequi sunt.</p>
+    <div className="flex-container">
+      <div className="body">
+        <h1><b>Welcome to Job Portal</b></h1>
+        <p><b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, consequatur ad nihil aliquam placeat recusandae labore libero itaque ipsum quibusdam sunt? Veritatis dolores id, aut totam aperiam dolor sequi sunt.</b></p>
       </div>
-      <div>
-        <img src="" alt="image" />
+      <div className="image">
+        <img src='./images/maid.png' alt="image" />
       </div>
     </div>
   );
