@@ -4,8 +4,13 @@ import mongoose from 'mongoose';
 const helperSchema = new mongoose.Schema({
   AadharNumber: {
     type: Number,
-    required: [true, "Aadhar number is required."],
-    length: [12, "Invalid Aadhar number"],
+    validate: {
+      validator: function (v) {
+        const aadharRegex = /^\d{12}$/;
+        return aadharRegex.test(v.toString());
+      },
+      message: "Invalid Aadhar number!",
+    },
   },
   DOB: {
     day: {
@@ -21,12 +26,16 @@ const helperSchema = new mongoose.Schema({
   Gender: {
     type: String,
     enum: ["male", "female", "other"],
-    default:"male"
+    default: "male",
   },
   MobileNo: {
     type: Number,
-    required: [true, "Mobile number is required."],
-    length: [10, "Invalid Mobile number"],
+    validate: {
+      validator: function (v) {
+        return /\+\d{1,4}-\d{10}/.test(v);
+      },
+      message: "{VALUE} is not a valid phone number!",
+    },
   },
   Religion: {
     type: String,
@@ -43,42 +52,59 @@ const helperSchema = new mongoose.Schema({
   Disability: {
     type: String,
     enum: ["yes", "no"],
-    default:"no"
+    default: "no",
   },
   MaritalStatus: {
     type: String,
     enum: ["married", "unmarried"],
-    default:"unmarried"
+    default: "unmarried",
   },
   jobSector: {
     type: String,
-    enum: ["househelp", "driver", "gardener", "cook", "nightguard", "babysitter", "caretaker", "hometutor", "petcarer", "housekeeper"],
-    default:"househelp"
+    enum: [
+      "househelp",
+      "driver",
+      "gardener",
+      "cook",
+      "nightguard",
+      "babysitter",
+      "caretaker",
+      "hometutor",
+      "petcarer",
+      "housekeeper",
+    ],
+    default: "househelp",
   },
   jobExperience: {
     type: String,
-    enum: ["fresher","1-5 yrs", "5-10 yrs", "10-15 yrs", "over 15 yrs", ],
-    default:"fresher"
+    enum: ["fresher", "1-5 yrs", "5-10 yrs", "10-15 yrs", "over 15 yrs"],
+    default: "fresher",
   },
   jobLocatin: {
     type: String,
     default: "kolkata",
-    required: [true, "Your location is required"]
+    required: [true, "Your location is required"],
   },
   availability: {
     type: String,
     enum: ["within 10 days", "within 20 days", "from next month"],
-    default:"within 10 days"
+    default: "within 10 days",
   },
   educationQulaification: {
     type: String,
-    enum: ["below matriculation", "matriculation", "higher secondary", "graduate", "post-graduate"],
-    default:"matriculation"
+    enum: [
+      "below matriculation",
+      "matriculation",
+      "higher secondary",
+      "graduate",
+      "post-graduate",
+    ],
+    default: "matriculation",
   },
-  expectedSalary:{
+  expectedSalary: {
     type: Number,
-    required: [true, "Expected salary is required."],
-  }
+    required: [true, "Salary expectation is required."],
+  },
 });
 
 export default mongoose.model('Helper', helperSchema);
