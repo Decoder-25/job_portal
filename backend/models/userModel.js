@@ -6,14 +6,6 @@ import JWT from 'jsonwebtoken';
 //schema
 const userSchema = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      required: [true, "First name is Required"],
-    },
-    lastName: {
-      type: String,
-      required: [true, "Last name is Required"],
-    },
     email: {
       type: String,
       required: [true, "Email is Required"],

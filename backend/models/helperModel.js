@@ -2,6 +2,18 @@ import mongoose from 'mongoose';
 
 //schema
 const helperSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
+  firstName: {
+    type: String,
+    required: [true, "First name is Required"],
+  },
+  lastName: {
+    type: String,
+    required: [true, "Last name is Required"],
+  },
   AadharNumber: {
     type: Number,
     validate: {
@@ -105,6 +117,7 @@ const helperSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Salary expectation is required."],
   },
-});
+},
+{ timestamps: true });
 
 export default mongoose.model('Helper', helperSchema);
