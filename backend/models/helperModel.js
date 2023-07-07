@@ -1,3 +1,5 @@
+//helperModeel.js
+
 import mongoose from 'mongoose';
 
 //schema
@@ -42,12 +44,7 @@ const helperSchema = new mongoose.Schema({
   },
   MobileNo: {
     type: Number,
-    validate: {
-      validator: function (v) {
-        return /\+\d{1,4}-\d{10}/.test(v);
-      },
-      message: "{VALUE} is not a valid phone number!",
-    },
+    required: true,
   },
   Religion: {
     type: String,

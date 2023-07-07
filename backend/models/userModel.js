@@ -1,3 +1,5 @@
+//userModel.js
+
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
@@ -18,7 +20,7 @@ const userSchema = new mongoose.Schema(
       minlength: [6, "Password length should be greater than 6 characters"],
       select: true,
     },
-    role: {
+    type: {
       type: String,
       required: true,
       enum: ['helper', 'recruiter'],

@@ -1,6 +1,8 @@
+//recruiterModel.js
+
 import mongoose from "mongoose";
 
-const recruierSchema = new mongoose.Schema({
+const recruiterSchema = new mongoose.Schema({
   userId: {
     type: String,
     required: true,
@@ -28,3 +30,5 @@ const recruierSchema = new mongoose.Schema({
   },
 },
 { timestamps: true });
+
+export default mongoose.model("Recruiter", recruiterSchema);
