@@ -8,6 +8,7 @@ import Login from "./componeent/Login/Login";
 import Navbar from "./componeent/Navbar/Navbar";
 import Application from "./componeent/Application/Application";
 import Profile_ami from "./componeent/Profile_ami/Profile_ami";
+import Profile_maid from "./componeent/profile_maid/Profile_maid";
 
 export const SetPopupContext = createContext();
 
@@ -26,11 +27,12 @@ function App() {
           {/* <Navbar /> */}
         </div>
         <Routes>
-        {/* <Route exact path="/" Component={Welcome} />
-          <Route exact path="/signup" Component={Signup} />
-          <Route exact path="/login" Component={Login} /> */}
+        {/* <Route exact path="/" Component={Welcome} /> */}
+          {/* <Route exact path="/" Component={Signup} /> */}
+          {/* <Route exact path="/login" Component={Login} /> */}
           {/* <Route exact path="/" Component={Application}/> */}
-          <Route exact path="/" Component={Profile_ami}/>
+          {/* <Route exact path="/" Component={Profile_ami}/> */}
+          <Route exact path="/" Component={Profile_maid}/>
         </Routes>
         <MessagePopup 
           open={popup.open}

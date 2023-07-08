@@ -66,7 +66,7 @@ import {
                   My Jobs
                 </Button>
                 <Button color="inherit" onClick={() => handleClick("/profile")}>
-                  Profile
+                  Profile_ami
                 </Button>
                 <Button color="inherit" onClick={() => handleClick("/logout")}>
                   Logout
