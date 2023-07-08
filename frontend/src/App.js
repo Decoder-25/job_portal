@@ -5,6 +5,7 @@ import Signup from "./componeent/Signup/Signup";
 import Welcome, { ErrorPage } from "./componeent/Welcome/Welcome";
 import MessagePopup from "./lib/MessagePopup";
 import Login from "./componeent/Login/Login";
+import Navbar from "./componeent/Navbar/Navbar";
 
 export const SetPopupContext = createContext();
 
@@ -19,10 +20,13 @@ function App() {
   return (
     <BrowserRouter >
       <SetPopupContext.Provider value={setPopup}>
+        <div>
+          <Navbar />
+        </div>
         <Routes>
-          {/* <Route exact path="/" Component={Welcome}></Route> */}
-          {/* <Route exact path="/" Component={Signup}></Route> */}
-          <Route exact path="/" Component={Login}></Route>
+          <Route exact path="/" Component={Welcome}></Route>
+          <Route exact path="/signup" Component={Signup}></Route>
+          <Route exact path="/login" Component={Login}></Route>
         </Routes>
         <MessagePopup 
           open={popup.open}
