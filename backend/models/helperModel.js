@@ -89,7 +89,7 @@ const helperSchema = new mongoose.Schema({
     enum: ["fresher", "1-5 yrs", "5-10 yrs", "10-15 yrs", "over 15 yrs"],
     default: "fresher",
   },
-  jobLocatin: {
+  jobLocation: {
     type: String,
     default: "kolkata",
     required: [true, "Your location is required"],
