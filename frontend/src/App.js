@@ -19,14 +19,14 @@ function App() {
   
   return (
     <BrowserRouter >
-      <SetPopupContext.Provider value={setPopup}>
+      <SetPopupContext.Provider value={{ popup, setPopup }}>
         <div>
           <Navbar />
         </div>
         <Routes>
-          <Route exact path="/" Component={Welcome}></Route>
-          <Route exact path="/signup" Component={Signup}></Route>
-          <Route exact path="/login" Component={Login}></Route>
+        <Route exact path="/" element={<Welcome />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/login" element={<Login />} />
         </Routes>
         <MessagePopup 
           open={popup.open}

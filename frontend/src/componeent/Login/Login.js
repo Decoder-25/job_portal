@@ -47,7 +47,7 @@ const Login = (props) => {
   // typography: {
   //   fontFamily: ['Shadows Into Light Two', 'cursive'].join(','),
   // }
-  const setPopup = useContext(SetPopupContext);
+  const { popup, setPopup } = useContext(SetPopupContext);
 
   const [loggedin, setLoggedin] = useState(isAuth());
 
