@@ -8,7 +8,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import PasswordInput from "../../lib/PasswordInput";
 import EmailInput from "../../lib/EmailInput";
@@ -127,6 +127,9 @@ const Login = (props) => {
         backgroundColor: "white"
     }
   return (
+  // loggedin ? (
+  //   <Navigate to="/login" />
+  // ) : (
     <Paper elevation={3} className={classes.body}>
       <Grid container direction="column" spacing={4} alignItems="center">
         <Grid item>
