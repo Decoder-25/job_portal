@@ -27,6 +27,7 @@ const helperSchema = new mongoose.Schema({
     },
   },
   DOB: {
+    type: String,
     day: {
       type: Number,
     },

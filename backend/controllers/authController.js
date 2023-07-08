@@ -1,3 +1,4 @@
+//authController.js
 import User from "../models/userModel.js";
 import Recruiter from "../models/recruiterModel.js";
 import Helper from "../models/helperModel.js";
