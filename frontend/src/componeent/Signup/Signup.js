@@ -321,8 +321,8 @@ const Login = (props) => {
   };
 
   return (
-  // loggedin ? (
-  //   <Navigate to="/" />
+  //  loggedin ? (
+  //   <Navigate to="/signup" />
   // ) : (
     <Paper elevation={3} className={classes.body}>
       <Grid container direction="column" spacing={4} alignItems="center">

@@ -10,7 +10,7 @@ import {
   
   // import { green } from "@mui/material/colors";
   
-  // import isAuth, { userType } from "../lib/isAuth";
+  import isAuth, { userType } from "../../lib/isAuth";
   
   const useStyles = makeStyles((theme) => ({
     // palette: {
@@ -44,23 +44,14 @@ import {
     return (
       <AppBar position="fixed" style={{backgroundColor: 'green' }}>
         <Toolbar>
-          <Typography variant="h5" className={classes.title}>
+          <Typography variant="h5" className={classes.title} onClick={() => handleClick("/")}>
             HELPER
           </Typography>
-          {/* {isAuth() ? (
+          {isAuth() ? (
             userType() === "helper" ? (
               <>
-                <Button color="inherit" onClick={() => handleClick("/home")}>
-                  Home
-                </Button>
-                <Button color="inherit" onClick={() => handleClick("/addjob")}>
-                  Add Jobs
-                </Button>
-                <Button color="inherit" onClick={() => handleClick("/myjobs")}>
-                  My Jobs
-                </Button>
-                <Button color="inherit" onClick={() => handleClick("/employees")}>
-                  Employees
+                <Button color="inherit" onClick={() => handleClick("/")}>
+                  Application
                 </Button>
                 <Button color="inherit" onClick={() => handleClick("/profile")}>
                   Profile
@@ -71,14 +62,8 @@ import {
               </>
             ) : (
               <>
-                <Button color="inherit" onClick={() => handleClick("/home")}>
-                  Home
-                </Button>
-                <Button
-                  color="inherit"
-                  onClick={() => handleClick("/applications")}
-                >
-                  Applications
+                <Button color="inherit" onClick={() => handleClick("/myjobs")}>
+                  My Jobs
                 </Button>
                 <Button color="inherit" onClick={() => handleClick("/profile")}>
                   Profile
@@ -88,7 +73,7 @@ import {
                 </Button>
               </>
             )
-          ) : ( */}
+          ) : (
             <>
               <Button color="inherit" onClick={() => handleClick("/login")}>
                 Login
@@ -97,7 +82,7 @@ import {
                 Signup
               </Button>
             </>
-          {/* )} */}
+          )}
         </Toolbar>
       </AppBar>
     );
